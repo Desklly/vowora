@@ -6,7 +6,12 @@ const formResult = document.getElementById("formResult");
 
 function openModal(theme) {
   if (theme) {
-    commitmentTheme.value = theme;
+    const selectedTheme = Array.from(commitmentTheme.options)
+      .find(option => option.value === theme);
+
+    if (selectedTheme) {
+      commitmentTheme.value = selectedTheme.value;
+    }
   }
 
   modalBackdrop.classList.add("open");
@@ -15,9 +20,7 @@ function openModal(theme) {
 
   formResult.textContent = "";
 
-  setTimeout(() => {
-    commitmentTitle.focus();
-  }, 50);
+  setTimeout(() => commitmentTitle.focus(), 50);
 }
 
 function closeModal() {
@@ -36,9 +39,7 @@ document.getElementById("createBottomBtn")
 // Sign-in placeholder
 document.getElementById("signInBtn")
   .addEventListener("click", () => {
-    alert(
-      "Sign-in will be enabled after we connect Supabase authentication."
-    );
+    alert("Sign-in will be enabled after we connect Supabase authentication.");
   });
 
 // Close popup
@@ -46,26 +47,28 @@ document.getElementById("modalClose")
   .addEventListener("click", closeModal);
 
 modalBackdrop.addEventListener("click", event => {
-  if (event.target === modalBackdrop) {
-    closeModal();
-  }
+  if (event.target === modalBackdrop) closeModal();
 });
 
 // Close popup using Escape
 document.addEventListener("keydown", event => {
-  if (
-    event.key === "Escape" &&
-    modalBackdrop.classList.contains("open")
-  ) {
+  if (event.key === "Escape" &&
+      modalBackdrop.classList.contains("open")) {
     closeModal();
   }
 });
 
-// Commitment theme selection
+// Commitment category cards
 document.querySelectorAll(".theme-card").forEach(card => {
   card.addEventListener("click", () => {
-    openModal(card.dataset.theme);
+    const theme = card.getAttribute("data-theme");
+    openModal(theme);
   });
+});
+
+// Track dropdown selection
+commitmentTheme.addEventListener("change", () => {
+  formResult.textContent = "";
 });
 
 // Commitment form preview
@@ -74,9 +77,11 @@ document.getElementById("commitmentForm")
     event.preventDefault();
 
     const title = commitmentTitle.value.trim();
-    const theme = commitmentTheme.value;
+    const theme = commitmentTheme.options[
+      commitmentTheme.selectedIndex
+    ].value;
 
-    if (!title) return;
+    if (!title || !theme) return;
 
     formResult.textContent =
       `Your "${theme}" commitment draft is ready to continue. ` +
@@ -88,20 +93,15 @@ const menuToggle = document.getElementById("menuToggle");
 
 menuToggle.addEventListener("click", () => {
   const nav = document.querySelector(".desktop-nav");
-
   const isOpen = nav.classList.toggle("show");
 
-  menuToggle.setAttribute(
-    "aria-expanded",
-    String(isOpen)
-  );
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
 });
 
 // Close mobile navigation after selecting a link
 document.querySelectorAll(".desktop-nav a").forEach(link => {
   link.addEventListener("click", () => {
     document.querySelector(".desktop-nav").classList.remove("show");
-
     menuToggle.setAttribute("aria-expanded", "false");
   });
 });
