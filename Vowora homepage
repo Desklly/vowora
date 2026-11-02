@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vowora helps people create, acknowledge and manage meaningful commitments.">
+  <meta name="theme-color" content="#101b35">
+  <title>Vowora – Every Promise Deserves a Record</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <a href="#" class="brand">
+      <span class="brand-symbol">V</span>
+      VOWORA
+    </a>
+
+    <nav>
+      <a href="#how-it-works">How it works</a>
+      <a href="#themes">Themes</a>
+      <a href="#about">About</a>
+    </nav>
+
+    <button class="nav-button" onclick="showLogin()">
+      Sign in
+    </button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">A NEW WAY TO HONOUR COMMITMENTS</span>
+
+        <h1>Every Promise<br>
+          <span>Deserves a Record.</span>
+        </h1>
+
+        <p>
+          Create meaningful commitments, share them with someone
+          important, and keep track of every promise together.
+        </p>
+
+        <button class="primary-button" onclick="showCreate()">
+          Create Your Promise <span>→</span>
+        </button>
+
+        <p class="small-note">
+          Simple. Personal. Mutual.
+        </p>
+      </div>
+
+      <div class="hero-card">
+        <div class="card-top">
+          <span>✦ MUTUAL COMMITMENT</span>
+          <span class="status">NEW</span>
+        </div>
+
+        <div class="card-icon">∞</div>
+
+        <h2>A promise worth keeping.</h2>
+        <p>Two people. One commitment. A record that matters.</p>
+
+        <div class="card-divider"></div>
+
+        <div class="card-footer">
+          <span>YOUR PROMISE</span>
+          <span>YOUR STORY</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="how-it-works">
+      <div class="section-heading">
+        <span class="eyebrow">HOW VOWORA WORKS</span>
+        <h2>Make commitments meaningful.</h2>
+        <p>A simple process built around mutual acknowledgement.</p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature">
+          <div class="feature-icon">✍</div>
+          <h3>01. Create</h3>
+          <p>Write your promise, choose a theme and set the terms.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon">↗</div>
+          <h3>02. Share</h3>
+          <p>Invite the other person through a private invitation link.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon">✓</div>
+          <h3>03. Acknowledge</h3>
+          <p>Both people review and acknowledge the agreed commitment.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon">∞</div>
+          <h3>04. Preserve</h3>
+          <p>Keep a record of milestones, changes and outcomes.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="themes" id="themes">
+      <div class="section-heading">
+        <span class="eyebrow">ONE PLATFORM. MANY MEANINGS.</span>
+        <h2>Choose your promise theme.</h2>
+        <p>Different relationships. One shared commitment experience.</p>
+      </div>
+
+      <div class="theme-grid">
+        <button class="theme-card business" onclick="selectTheme('Business')">
+          <span>◈</span><strong>Business</strong>
+          <small>Professional commitments</small>
+        </button>
+
+        <button class="theme-card love" onclick="selectTheme('Love')">
+          <span>♡</span><strong>Love</strong>
+          <small>Promises from the heart</small>
+        </button>
+
+        <button class="theme-card friends" onclick="selectTheme('Friends')">
+          <span>✦</span><strong>Friends</strong>
+          <small>Friendship commitments</small>
+        </button>
+
+        <button class="theme-card family" onclick="selectTheme('Family')">
+          <span>⌂</span><strong>Family</strong>
+          <small>Promises that bring us closer</small>
+        </button>
+
+        <button class="theme-card personal" onclick="selectTheme('Personal')">
+          <span>◎</span><strong>Personal</strong>
+          <small>Commitments to yourself</small>
+        </button>
+
+        <button class="theme-card custom" onclick="selectTheme('Custom')">
+          <span>✧</span><strong>Custom</strong>
+          <small>Create your own experience</small>
+        </button>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <span class="eyebrow">THE VOWORA IDEA</span>
+      <h2>More than words.<br> A commitment you can revisit.</h2>
+      <p>
+        Vowora is designed to help people document mutual commitments,
+        acknowledge agreed terms and keep track of changes and outcomes.
+      </p>
+    </section>
+
+    <section class="cta">
+      <h2>Ready to make a promise?</h2>
+      <p>Start creating a meaningful commitment today.</p>
+      <button class="primary-button" onclick="showCreate()">
+        Get Started →
+      </button>
+    </section>
+  </main>
+
+  <footer>
+    <a href="#" class="brand">VOWORA</a>
+    <p>Every Promise Deserves a Record.</p>
+    <small>
+      Vowora provides digital commitment records. It does not
+      guarantee legal enforceability or independently verify identities.
+    </small>
+    <p>© 2026 Vowora. All rights reserved.</p>
+  </footer>
+
+  <div id="message-modal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeModal()">×</button>
+      <h2 id="modal-title">Welcome to Vowora</h2>
+      <p id="modal-message"></p>
+      <button class="primary-button" onclick="closeModal()">Continue</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
